@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageBanner from '../components/blog/PageBanner.astro';
+
+const learningTopics = [
+	{
+		number: '01',
+		title: 'Research Problem',
+		description:
+			'Memahami perbedaan antara masalah umum dan masalah penelitian.',
+	},
+	{
+		number: '02',
+		title: 'Literature Review',
+		description:
+			'Memahami penelitian sebelumnya dan menemukan research gap.',
+	},
+	{
+		number: '03',
+		title: 'Research Method',
+		description:
+			'Memahami perbedaan metode penelitian dan metode pengembangan software.',
+	},
+	{
+		number: '04',
+		title: 'Contribution',
+		description:
+			'Memahami bahwa tujuan utama penelitian adalah memberikan kontribusi terhadap pengetahuan.',
+	},
+	{
+		number: '05',
+		title: 'Evaluation',
+		description:
+			'Memahami bagaimana metode yang diusulkan diuji dan dievaluasi.',
+	},
+	{
+		number: '06',
+		title: 'Publication',
+		description:
+			'Memahami prinsip publikasi dan etika dalam penelitian ilmiah.',
+	},
+];
+---
+
+<BaseLayout
+	title="About This Website"
+	description="Tentang website 10 Mitos Penelitian di Bidang Komputasi."
+>
+	<main>
+
+		<!-- ========================================= -->
+		<!-- PAGE BANNER -->
+		<!-- ========================================= -->
+
+		<PageBanner
+			eyebrow="About This Website"
+			title="Memahami penelitian komputasi dengan cara yang lebih sederhana."
+			sub="10 Mitos Penelitian adalah website edukasi yang membantu mahasiswa memahami konsep dasar penelitian di bidang komputasi melalui penjelasan yang sederhana dan terstruktur."
+		/>
+
+
+		<!-- ========================================= -->
+		<!-- WHY THIS WEBSITE -->
+		<!-- ========================================= -->
+
+		<section>
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="grid gap-12 lg:grid-cols-2">
+
+					<div>
+
+						<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+							Mengapa Website Ini Dibuat?
+						</p>
+
+						<h2 class="mt-3 max-w-xl text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+							Penelitian bukan sekadar coding.
+						</h2>
+
+					</div>
+
+
+					<div class="space-y-5 text-base leading-relaxed text-ink/70">
+
+						<p>
+							Dalam bidang komputasi, penelitian sering kali dipahami
+							hanya sebagai proses membuat aplikasi atau sistem.
+							Padahal, penelitian memiliki tujuan yang lebih mendasar,
+							yaitu menghasilkan kontribusi terhadap pengetahuan.
+						</p>
+
+						<p>
+							Website ini dibuat untuk membantu mahasiswa memahami cara
+							berpikir dalam penelitian, mulai dari menemukan research
+							problem, membaca literature, memahami research gap,
+							menentukan metode, melakukan evaluasi, hingga menyusun
+							publikasi.
+						</p>
+
+						<p>
+							Materi disusun dalam bentuk 10 mitos penelitian yang sering
+							muncul dalam proses penelitian bidang komputasi.
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- WHAT YOU WILL LEARN -->
+		<!-- ========================================= -->
+
+		<section class="border-y-2 border-line bg-paper">
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="mb-10">
+
+					<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+						Apa yang Akan Dipelajari?
+					</p>
+
+					<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+						Dari memahami masalah hingga menghasilkan kontribusi.
+					</h2>
+
+				</div>
+
+
+				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+					{learningTopics.map((topic, index) => (
+						<article
+							class:list={[
+								'group relative rounded-card border-2 border-ink bg-cloud p-6 shadow-pop transition-[transform,box-shadow] duration-200 hover:rotate-0 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop-lg',
+								index % 2 === 0
+									? 'rotate-[-1.5deg]'
+									: 'rotate-[1.5deg]',
+							]}
+						>
+
+							<div class="flex items-start justify-between">
+
+								<span
+									class="inline-flex items-center rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+								>
+									{topic.number}
+								</span>
+
+								<span class="text-[13px] font-bold uppercase tracking-wider text-orange-deep">
+									Research
+								</span>
+
+							</div>
+
+
+							<h3 class="mt-6 text-[22px] font-bold leading-tight tracking-[-0.02em] text-ink">
+								{topic.title}
+							</h3>
+
+
+							<p class="mt-3 text-[15px] leading-relaxed text-ink/75">
+								{topic.description}
+							</p>
+
+
+							<div class="mt-6 border-t-2 border-line pt-4">
+
+								<span class="text-[13px] font-bold text-orange-deep">
+									Yang akan dipahami
+								</span>
+
+							</div>
+
+						</article>
+					))}
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- SOURCE -->
+		<!-- ========================================= -->
+
+		<section>
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="grid gap-12 lg:grid-cols-2">
+
+					<div>
+
+						<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+							Materi
+						</p>
+
+						<h2 class="mt-3 max-w-xl text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+							10 Mitos Penelitian di Bidang Komputasi
+						</h2>
+
+					</div>
+
+
+					<div class="space-y-5 text-base leading-relaxed text-ink/70">
+
+						<p>
+							Materi utama website ini dikembangkan berdasarkan materi
+							<strong>10 Mitos Penelitian di Bidang Komputasi</strong>.
+						</p>
+
+						<p>
+							Materi kemudian disusun kembali dalam format website agar
+							lebih mudah dipelajari secara bertahap.
+						</p>
+
+						<p>
+							Website ini berfokus pada pemahaman konsep dan cara berpikir
+							penelitian, bukan sekadar tutorial teknis pemrograman.
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- HOW TO USE -->
+		<!-- ========================================= -->
+
+		<section class="border-y-2 border-line bg-paper">
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="grid gap-8 lg:grid-cols-3">
+
+					<div class="rounded-card border-2 border-ink bg-cloud p-6 shadow-pop-sm">
+
+						<span
+							class="inline-flex rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+						>
+							01
+						</span>
+
+						<h3 class="mt-5 text-xl font-bold text-ink">
+							Baca 10 Mitos
+						</h3>
+
+						<p class="mt-3 text-[15px] leading-relaxed text-ink/70">
+							Mulai dengan memahami kesalahpahaman yang sering muncul
+							dalam penelitian komputasi.
+						</p>
+
+					</div>
+
+
+					<div class="rounded-card border-2 border-ink bg-cloud p-6 shadow-pop-sm">
+
+						<span
+							class="inline-flex rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+						>
+							02
+						</span>
+
+						<h3 class="mt-5 text-xl font-bold text-ink">
+							Gunakan Roadmap
+						</h3>
+
+						<p class="mt-3 text-[15px] leading-relaxed text-ink/70">
+							Lihat bagaimana research field berkembang hingga menjadi
+							sebuah publikasi penelitian.
+						</p>
+
+					</div>
+
+
+					<div class="rounded-card border-2 border-ink bg-cloud p-6 shadow-pop-sm">
+
+						<span
+							class="inline-flex rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+						>
+							03
+						</span>
+
+						<h3 class="mt-5 text-xl font-bold text-ink">
+							Buka Glossary
+						</h3>
+
+						<p class="mt-3 text-[15px] leading-relaxed text-ink/70">
+							Gunakan glossary ketika menemukan istilah penelitian yang
+							belum dipahami.
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- CTA -->
+		<!-- ========================================= -->
+
+		<section>
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="rounded-card border-2 border-ink bg-navy p-8 shadow-pop sm:p-10">
+
+					<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-glow">
+						Mulai Belajar
+					</p>
+
+					<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-cloud sm:text-4xl">
+						Mulai dari 10 Mitos Penelitian.
+					</h2>
+
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-cloud/70">
+						Pelajari setiap mitos secara bertahap dan gunakan Research
+						Roadmap serta Glossary sebagai pendamping.
+					</p>
+
+
+					<div class="mt-7 flex flex-wrap gap-3">
+
+						<a
+							href="/myths"
+							class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+						>
+							Mulai Belajar
+							<span class="ml-1">→</span>
+						</a>
+
+
+						<a
+							href="/roadmap"
+							class="inline-flex items-center rounded-full border-2 border-cloud bg-cloud px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+						>
+							Lihat Roadmap
+							<span class="ml-1">→</span>
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</main>
+</BaseLayout>

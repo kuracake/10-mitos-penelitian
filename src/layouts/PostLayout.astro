@@ -39,7 +39,7 @@ const updatedLabel = updatedDate?.toLocaleDateString('en-US', {
 >
 	<article data-pagefind-body data-pagefind-filter="type:Blog">
 		<header class="border-b-2 border-line bg-paper">
-			<div class="mx-auto max-w-[720px] px-6 pt-16 pb-10">
+			<div class="mx-auto max-w-180 px-6 pt-16 pb-10">
 				<a
 					href="/blog"
 					class="inline-flex items-center gap-1 text-sm font-bold text-orange-deep hover:text-orange"
@@ -82,7 +82,7 @@ const updatedLabel = updatedDate?.toLocaleDateString('en-US', {
 			</div>
 		</header>
 
-		<div class="prose mx-auto max-w-[720px] px-6 py-12">
+		<div class="prose mx-auto max-w-180 px-6 py-12">
 			<slot />
 		</div>
 	</article>
@@ -90,7 +90,7 @@ const updatedLabel = updatedDate?.toLocaleDateString('en-US', {
 	{
 		(prev || next) && (
 			<nav
-				class="mx-auto grid max-w-[720px] gap-4 px-6 pb-20 sm:grid-cols-2"
+				class="mx-auto grid max-w-180 gap-4 px-6 pb-20 sm:grid-cols-2"
 				aria-label="More posts"
 			>
 				{prev ? (

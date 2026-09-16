@@ -1,54 +1,240 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageBanner from '../components/blog/PageBanner.astro';
-
-// Pagefind の UI アセットは `pnpm build`（astro build && pagefind）後に dist/pagefind/ へ生成される。
-// dev では存在しないため、検索は build/preview・本番で動作する。
 ---
 
-<BaseLayout title="Search" description="Search posts and projects across the site.">
-	<PageBanner eyebrow="Search" title="Find anything" sub="Search across blog posts and project case studies." />
+<BaseLayout
+  title="Search"
+  description="Cari materi penelitian di website 10 Mitos Penelitian di Bidang Komputasi."
+>
+  <main>
+    <!-- SEARCH HEADER -->
+    <PageBanner
+      eyebrow="Research Search"
+      title="Cari Materi Penelitian"
+      sub="Temukan mitos penelitian, konsep, dan pembahasan yang kamu butuhkan."
+    />
 
-	<div class="mx-auto max-w-[720px] px-6 py-12">
-		<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-		<div id="search" class="kepler-search"></div>
-		<noscript>
-			<p class="text-ink/60">Search requires JavaScript.</p>
-		</noscript>
-	</div>
+    <!-- SEARCH -->
+    <section>
+      <div class="mx-auto max-w-225 px-8 py-14 sm:py-20">
+        <div
+          class="rounded-card border-2 border-ink bg-cloud p-6 shadow-pop sm:p-8"
+        >
+          <div class="mb-6">
+            <p
+              class="text-[12px] font-bold uppercase tracking-[0.14em] text-orange-deep"
+            >
+              Research Search
+            </p>
+
+            <h2
+              class="mt-2 text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl"
+            >
+              Apa yang ingin kamu pelajari?
+            </h2>
+
+            <p class="mt-3 text-sm leading-relaxed text-ink/60">
+              Gunakan kata kunci seperti
+              <strong>research problem</strong>,
+              <strong>research gap</strong>,
+              <strong>literature review</strong>,
+              atau nama mitos tertentu.
+            </p>
+          </div>
+
+          <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+          <div id="search" class="research-search"></div>
+
+          <noscript>
+            <div
+              class="mt-5 rounded-tile border-2 border-orange bg-orange-soft p-4"
+            >
+              <p class="text-sm font-semibold text-orange-deep">
+                Search membutuhkan JavaScript untuk bekerja.
+              </p>
+            </div>
+          </noscript>
+        </div>
+
+        <!-- SEARCH TIPS -->
+        <div class="mt-10">
+          <p
+            class="text-[12px] font-bold uppercase tracking-[0.14em] text-orange-deep"
+          >
+            Contoh Pencarian
+          </p>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              class="rounded-tile border-2 border-ink bg-paper p-4 shadow-pop-sm"
+            >
+              <p class="text-xs font-bold text-orange-deep">
+                Research Problem
+              </p>
+              <p class="mt-2 text-sm text-ink/60">
+                Cari pembahasan tentang masalah penelitian.
+              </p>
+            </div>
+
+            <div
+              class="rounded-tile border-2 border-ink bg-paper p-4 shadow-pop-sm"
+            >
+              <p class="text-xs font-bold text-orange-deep">
+                Research Gap
+              </p>
+              <p class="mt-2 text-sm text-ink/60">
+                Temukan pembahasan tentang research gap.
+              </p>
+            </div>
+
+            <div
+              class="rounded-tile border-2 border-ink bg-paper p-4 shadow-pop-sm"
+            >
+              <p class="text-xs font-bold text-orange-deep">
+                Literature Review
+              </p>
+              <p class="mt-2 text-sm text-ink/60">
+                Cari materi tentang studi literatur.
+              </p>
+            </div>
+
+            <div
+              class="rounded-tile border-2 border-ink bg-paper p-4 shadow-pop-sm"
+            >
+              <p class="text-xs font-bold text-orange-deep">
+                Citation
+              </p>
+              <p class="mt-2 text-sm text-ink/60">
+                Cari materi tentang citation dan etika.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t-2 border-line bg-paper">
+      <div class="mx-auto max-w-300 px-8 py-14 sm:py-16">
+        <div
+          class="rounded-card border-2 border-ink bg-navy p-8 shadow-pop sm:p-10"
+        >
+          <p
+            class="text-[12px] font-bold uppercase tracking-[0.14em] text-orange-glow"
+          >
+            Tidak Tahu Mulai dari Mana?
+          </p>
+
+          <h2
+            class="mt-3 max-w-2xl text-3xl font-bold tracking-[-0.02em] text-cloud sm:text-4xl"
+          >
+            Mulai dari 10 Mitos Penelitian.
+          </h2>
+
+          <p
+            class="mt-4 max-w-2xl text-base leading-relaxed text-cloud/70"
+          >
+            Pelajari kesalahpahaman dasar dalam penelitian komputasi sebelum
+            melanjutkan ke research roadmap dan glossary.
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a
+              href="/myths"
+              class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+            >
+              Lihat 10 Mitos
+              <span class="ml-1">→</span>
+            </a>
+
+            <a
+              href="/roadmap"
+              class="inline-flex items-center rounded-full border-2 border-ink bg-cloud px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+            >
+              Research Roadmap
+              <span class="ml-1">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
 
 <style is:global>
-	/* Pagefind UI をデザイントークンに合わせる */
-	.kepler-search {
-		--pagefind-ui-primary: var(--color-navy);
-		--pagefind-ui-text: var(--color-ink);
-		--pagefind-ui-background: var(--color-cloud);
-		--pagefind-ui-border: rgb(15 30 66 / 0.15);
-		--pagefind-ui-tag: var(--color-orange-soft);
-		--pagefind-ui-border-width: 2px;
-		--pagefind-ui-border-radius: 14px;
-		--pagefind-ui-font: var(--font-body);
-	}
-	.kepler-search .pagefind-ui__search-input {
-		font-weight: 600;
-		box-shadow: var(--shadow-pop-sm);
-	}
-	.kepler-search .pagefind-ui__result {
-		border-top: 2px solid var(--color-line);
-	}
-	.kepler-search .pagefind-ui__result-title a {
-		font-family: var(--font-display);
-		color: var(--color-navy);
-	}
+  .research-search {
+    --pagefind-ui-primary: var(--color-navy);
+    --pagefind-ui-text: var(--color-ink);
+    --pagefind-ui-background: var(--color-cloud);
+    --pagefind-ui-border: rgb(15 30 66 / 0.15);
+    --pagefind-ui-tag: var(--color-orange-soft);
+    --pagefind-ui-border-width: 2px;
+    --pagefind-ui-border-radius: 14px;
+    --pagefind-ui-font: var(--font-body);
+  }
+
+  .research-search .pagefind-ui__search-input {
+    min-height: 52px;
+    font-weight: 600;
+    box-shadow: var(--shadow-pop-sm);
+  }
+
+  .research-search .pagefind-ui__search-input:focus {
+    border-color: var(--color-navy);
+  }
+
+  .research-search .pagefind-ui__drawer {
+    border-radius: var(--radius-tile);
+  }
+
+  .research-search .pagefind-ui__result {
+    padding: 1.25rem 0;
+    border-top: 2px solid var(--color-line);
+  }
+
+  .research-search .pagefind-ui__result:first-child {
+    border-top: 0;
+  }
+
+  .research-search .pagefind-ui__result-title a {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .research-search .pagefind-ui__result-title a:hover {
+    color: var(--color-orange-deep);
+  }
+
+  .research-search .pagefind-ui__result-excerpt {
+    color: rgb(15 30 66 / 0.65);
+    line-height: 1.7;
+  }
+
+  .research-search .pagefind-ui__result-link {
+    color: var(--color-orange-deep);
+  }
+
+  @media (max-width: 640px) {
+    .research-search .pagefind-ui__search-input {
+      min-height: 48px;
+    }
+  }
 </style>
 
-<!-- Pagefind UI は build 成果物（dist/pagefind/）にのみ存在するため is:inline で実行時読み込みする -->
 <script src="/pagefind/pagefind-ui.js" is:inline></script>
+
 <script is:inline>
-	window.addEventListener('DOMContentLoaded', () => {
-		if (window.PagefindUI) {
-			new window.PagefindUI({ element: '#search', showSubResults: true, showImages: false });
-		}
-	});
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.PagefindUI) {
+      new window.PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+      });
+    }
+  });
 </script>

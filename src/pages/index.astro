@@ -1,20 +1,460 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/landing/Hero.astro';
-import Features from '../components/landing/Features.astro';
-import Showcase from '../components/landing/Showcase.astro';
-import Pricing from '../components/landing/Pricing.astro';
-import Testimonials from '../components/landing/Testimonials.astro';
-import Faq from '../components/landing/Faq.astro';
-import FinalCta from '../components/landing/FinalCta.astro';
+
+const myths = await getCollection('myths');
+
+const publishedMyths = myths
+  .filter((myth) => !myth.data.draft)
+  .sort((a, b) => a.data.mythNumber - b.data.mythNumber);
+
+const featuredMyths = publishedMyths.slice(0, 6);
+
+const glossary = [
+  {
+    term: 'Research Problem',
+    description:
+      'Masalah atau persoalan ilmiah yang ingin dijawab melalui sebuah penelitian.',
+  },
+  {
+    term: 'Research Gap',
+    description:
+      'Bagian dari pengetahuan atau penelitian sebelumnya yang masih dapat dikembangkan.',
+  },
+  {
+    term: 'Literature Review',
+    description:
+      'Proses mempelajari dan mengevaluasi penelitian sebelumnya untuk menemukan research gap.',
+  },
+  {
+    term: 'State-of-the-Art',
+    description:
+      'Gambaran perkembangan penelitian terbaru pada suatu topik.',
+  },
+];
+
+const roadmap = [
+  'Research Field',
+  'Research Topic',
+  'Research Problem',
+  'State-of-the-Art',
+  'Proposed Method',
+  'Evaluation',
+  'Publication',
+];
 ---
 
-<BaseLayout>
-	<Hero />
-	<Features />
-	<Showcase />
-	<Pricing />
-	<Testimonials />
-	<Faq />
-	<FinalCta />
+<BaseLayout
+  title="10 Mitos Penelitian di Bidang Komputasi"
+  description="Website edukasi untuk memahami 10 mitos penelitian di bidang komputasi dan dasar-dasar penelitian."
+>
+  <main>
+    <!-- HERO -->
+    <section class="border-b-2 border-line bg-paper">
+      <div class="mx-auto max-w-300 px-8 py-20 sm:py-24 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <p
+              class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep"
+            >
+              Edukasi Penelitian Komputasi
+            </p>
+
+            <h1
+              class="mt-4 max-w-4xl text-[clamp(2.8rem,7vw,5.5rem)] font-bold leading-[0.98] tracking-[-0.04em] text-ink"
+            >
+              10 Mitos Penelitian di Bidang Komputasi.
+            </h1>
+
+            <p
+              class="mt-6 max-w-2xl text-lg leading-relaxed text-ink/70 sm:text-xl"
+            >
+              Memahami penelitian komputasi bukan sekadar membuat software.
+              Pelajari cara berpikir penelitian melalui 10 mitos yang sering
+              muncul dalam proses penelitian.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/myths"
+                class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+              >
+                Mulai Belajar
+                <span class="ml-1">→</span>
+              </a>
+
+              <a
+                href="/roadmap"
+                class="inline-flex items-center rounded-full border-2 border-ink bg-cloud px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+              >
+                Lihat Roadmap
+                <span class="ml-1">→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="-rotate-2 rounded-card border-2 border-ink bg-navy p-7 shadow-pop-lg sm:p-9"
+            >
+              <div class="flex items-center justify-between">
+                <span
+                  class="inline-flex items-center rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+                >
+                  01 — 10
+                </span>
+
+                <span
+                  class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-glow"
+                >
+                  Research
+                </span>
+              </div>
+
+              <h2
+                class="mt-8 text-3xl font-bold leading-tight tracking-[-0.02em] text-cloud sm:text-4xl"
+              >
+                Penelitian bukan sekadar coding.
+              </h2>
+
+              <p class="mt-5 text-base leading-relaxed text-cloud/70">
+                Software, dataset, dan eksperimen dapat menjadi bagian dari
+                proses penelitian untuk menjawab pertanyaan dan menghasilkan
+                kontribusi terhadap pengetahuan.
+              </p>
+
+              <div class="mt-8 border-t-2 border-cloud/15 pt-6">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-bold text-cloud/60">
+                    10 Mitos
+                  </span>
+
+                  <span class="text-sm font-bold text-orange-glow">
+                    7 Tahap Roadmap
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="absolute -bottom-5 -left-3 hidden rounded-chip border-2 border-ink bg-orange px-4 py-2 text-sm font-bold text-cloud shadow-pop-sm sm:block"
+            >
+              Baca · Pahami · Teliti
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section>
+      <div class="mx-auto max-w-300 px-8 py-16 sm:py-20">
+        <div class="grid gap-10 lg:grid-cols-2">
+          <div>
+            <p
+              class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep"
+            >
+              Mengapa Website Ini?
+            </p>
+
+            <h2
+              class="mt-3 max-w-xl text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl"
+            >
+              Memahami penelitian sebelum mulai meneliti.
+            </h2>
+          </div>
+
+          <div class="space-y-5 text-base leading-relaxed text-ink/70">
+            <p>
+              Dalam penelitian bidang komputasi, software tidak selalu menjadi
+              kontribusi utama. Software dapat digunakan sebagai alat
+              eksperimen atau testbed untuk mengukur metode atau algoritma yang
+              diusulkan.
+            </p>
+
+            <p>
+              Tujuan utama penelitian adalah memberikan kontribusi terhadap
+              pengetahuan. Karena itu, memahami research problem, literature
+              review, research gap, metode, evaluasi, dan publikasi menjadi
+              bagian penting dalam proses penelitian.
+            </p>
+
+            <a
+              href="/about"
+              class="inline-flex items-center font-bold text-orange-deep transition-colors hover:text-orange"
+            >
+              Pelajari tentang website ini
+              <span class="ml-1">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 MYTHS -->
+    <section class="border-y-2 border-line bg-paper">
+      <div class="mx-auto max-w-300 px-8 py-16 sm:py-20">
+        <div class="mb-10 flex items-end justify-between gap-6">
+          <div>
+            <p
+              class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep"
+            >
+              Materi Utama
+            </p>
+
+            <h2
+              class="mt-3 text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl"
+            >
+              10 Mitos Penelitian
+            </h2>
+
+            <p class="mt-3 max-w-2xl text-base leading-relaxed text-ink/65">
+              Kesalahpahaman yang sering muncul ketika memahami penelitian
+              bidang komputasi.
+            </p>
+          </div>
+
+          <a
+            href="/myths"
+            class="hidden text-sm font-bold text-orange-deep transition-colors hover:text-orange sm:block"
+          >
+            Lihat semua →
+          </a>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {
+            featuredMyths.map((myth, index) => (
+              <article
+                class:list={[
+                  'group relative flex flex-col rounded-card border-2 border-ink bg-cloud p-6 shadow-pop transition-[transform,box-shadow] duration-200 hover:rotate-0 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop-lg',
+                  index % 2 === 0
+                    ? 'rotate-[-1.5deg]'
+                    : 'rotate-[1.5deg]',
+                ]}
+              >
+                <div class="relative z-10 mb-5 flex items-center justify-between gap-3">
+                  <span class="inline-flex items-center rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud">
+                    Mitos {String(myth.data.mythNumber).padStart(2, '0')}
+                  </span>
+
+                  <span class="text-[12px] font-bold uppercase tracking-wider text-orange-deep">
+                    {myth.data.category}
+                  </span>
+                </div>
+
+                <h3 class="text-[21px] font-bold leading-tight tracking-[-0.02em] text-ink">
+                  <a
+                    href={`/myths/${myth.id}`}
+                    class="after:absolute after:inset-0 group-hover:text-navy"
+                  >
+                    {myth.data.title}
+                  </a>
+                </h3>
+
+                <p class="mt-3 text-[14px] leading-relaxed text-ink/70">
+                  {myth.data.description}
+                </p>
+
+                <span class="mt-6 inline-flex items-center gap-1 text-sm font-bold text-orange-deep">
+                  Baca materi
+                  <span
+                    class="transition-transform group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </span>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 sm:hidden">
+          <a
+            href="/myths"
+            class="inline-flex items-center font-bold text-orange-deep"
+          >
+            Lihat semua 10 mitos
+            <span class="ml-1">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section>
+      <div class="mx-auto max-w-300 px-8 py-16 sm:py-20">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p
+              class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep"
+            >
+              Research Roadmap
+            </p>
+
+            <h2
+              class="mt-3 text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl"
+            >
+              Dari ide hingga publikasi.
+            </h2>
+
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-ink/70">
+              Penelitian dapat dipahami sebagai proses yang saling
+              berhubungan, mulai dari menentukan bidang hingga
+              mendokumentasikan kontribusi melalui publikasi.
+            </p>
+
+            <a
+              href="/roadmap"
+              class="mt-7 inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+            >
+              Buka Research Roadmap
+              <span class="ml-1">→</span>
+            </a>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              roadmap.map((step, index) => (
+                <div
+                  class:list={[
+                    'rounded-tile border-2 border-ink bg-cloud p-5 shadow-pop-sm',
+                    index === roadmap.length - 1
+                      ? 'sm:col-span-2'
+                      : '',
+                  ]}
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-8 min-w-8 items-center justify-center rounded-chip border-2 border-ink bg-orange px-2 text-xs font-bold text-cloud">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    <h3 class="font-bold text-ink">
+                      {step}
+                    </h3>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="border-y-2 border-line bg-paper">
+      <div class="mx-auto max-w-300 px-8 py-16 sm:py-20">
+        <div class="mb-10 flex items-end justify-between gap-6">
+          <div>
+            <p
+              class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep"
+            >
+              Research Glossary
+            </p>
+
+            <h2
+              class="mt-3 text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl"
+            >
+              Istilah penting penelitian.
+            </h2>
+          </div>
+
+          <a
+            href="/glossary"
+            class="hidden text-sm font-bold text-orange-deep transition-colors hover:text-orange sm:block"
+          >
+            Lihat glossary →
+          </a>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {
+            glossary.map((item, index) => (
+              <article
+                class:list={[
+                  'rounded-card border-2 border-ink bg-cloud p-6 shadow-pop-sm',
+                  index % 2 === 0
+                    ? '-rotate-1'
+                    : 'rotate-1',
+                ]}
+              >
+                <span class="inline-flex rounded-chip border-2 border-ink bg-orange-soft px-3 py-1 text-[12px] font-bold text-orange-deep">
+                  Glossary
+                </span>
+
+                <h3 class="mt-5 text-xl font-bold tracking-[-0.02em] text-ink">
+                  {item.term}
+                </h3>
+
+                <p class="mt-3 text-[14px] leading-relaxed text-ink/70">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 sm:hidden">
+          <a
+            href="/glossary"
+            class="inline-flex items-center font-bold text-orange-deep"
+          >
+            Lihat glossary lengkap
+            <span class="ml-1">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="mx-auto max-w-300 px-8 py-16 sm:py-20">
+        <div
+          class="rounded-card border-2 border-ink bg-navy p-8 shadow-pop sm:p-10 lg:p-12"
+        >
+          <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <p
+                class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-glow"
+              >
+                Mulai Belajar
+              </p>
+
+              <h2
+                class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-cloud sm:text-4xl"
+              >
+                Pahami penelitian komputasi dengan lebih terstruktur.
+              </h2>
+
+              <p
+                class="mt-4 max-w-2xl text-base leading-relaxed text-cloud/70"
+              >
+                Mulai dari 10 mitos, lanjutkan ke research roadmap, dan gunakan
+                glossary sebagai pendamping untuk memahami istilah penelitian.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="/myths"
+                class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+              >
+                Mulai Belajar
+                <span class="ml-1">→</span>
+              </a>
+
+              <a
+                href="/glossary"
+                class="inline-flex items-center rounded-full border-2 border-ink bg-cloud px-5 py-2.5 text-sm font-bold text-ink shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+              >
+                Buka Glossary
+                <span class="ml-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </BaseLayout>

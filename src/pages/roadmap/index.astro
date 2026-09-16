@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/blog/PageBanner.astro';
+
+const steps = [
+	{
+		number: '01',
+		title: 'Research Field',
+		description: 'Menentukan bidang penelitian yang ingin dipelajari.',
+		detail:
+			'Tentukan bidang yang menjadi fokus penelitian, misalnya Artificial Intelligence, Data Science, Computer Vision, Software Engineering, atau bidang komputasi lainnya.',
+	},
+	{
+		number: '02',
+		title: 'Research Topic',
+		description: 'Mempersempit bidang menjadi topik penelitian.',
+		detail:
+			'Dari bidang yang luas, tentukan topik yang lebih spesifik berdasarkan minat, perkembangan penelitian, dan literatur yang tersedia.',
+	},
+	{
+		number: '03',
+		title: 'Research Problem',
+		description: 'Menentukan masalah atau pertanyaan penelitian.',
+		detail:
+			'Cari masalah penelitian berdasarkan pemahaman terhadap penelitian sebelumnya dan identifikasi bagian yang masih dapat dikembangkan.',
+	},
+	{
+		number: '04',
+		title: 'State-of-the-Art',
+		description: 'Memahami penelitian yang sudah dilakukan.',
+		detail:
+			'Pelajari penelitian terdahulu untuk mengetahui metode, hasil, keterbatasan, dan perkembangan terbaru pada topik yang dipilih.',
+	},
+	{
+		number: '05',
+		title: 'Proposed Method',
+		description: 'Menentukan pendekatan yang akan digunakan.',
+		detail:
+			'Rancang metode atau pendekatan untuk menjawab research problem yang telah ditentukan.',
+	},
+	{
+		number: '06',
+		title: 'Evaluation',
+		description: 'Menguji dan mengevaluasi metode yang diusulkan.',
+		detail:
+			'Lakukan eksperimen atau evaluasi untuk mengetahui apakah metode yang diusulkan dapat memberikan hasil yang sesuai.',
+	},
+	{
+		number: '07',
+		title: 'Publication',
+		description: 'Menyusun dan mempublikasikan hasil penelitian.',
+		detail:
+			'Dokumentasikan kontribusi, metode, eksperimen, hasil, dan pembahasan dalam bentuk paper penelitian.',
+	},
+];
+---
+
+<BaseLayout
+	title="Research Roadmap"
+	description="Roadmap penelitian komputasi dari research field hingga publication."
+>
+	<main>
+
+		<!-- ========================================= -->
+		<!-- PAGE BANNER -->
+		<!-- ========================================= -->
+
+		<PageBanner
+			eyebrow="Research Roadmap"
+			title="Dari Ide hingga Publikasi"
+			sub="Memahami bagaimana sebuah penelitian komputasi berkembang dari bidang penelitian hingga menghasilkan kontribusi ilmiah."
+		/>
+
+
+		<!-- ========================================= -->
+		<!-- ROADMAP CARDS -->
+		<!-- ========================================= -->
+
+		<section>
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="mb-10 flex items-end justify-between gap-6">
+
+					<div>
+						<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+							Tahapan Penelitian
+						</p>
+
+						<h2 class="mt-2 text-3xl font-bold tracking-[-0.02em] text-ink">
+							7 Tahap Research Roadmap
+						</h2>
+					</div>
+
+					<p class="hidden text-sm font-semibold text-ink/50 sm:block">
+						01 — 07
+					</p>
+
+				</div>
+
+
+				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+					{steps.map((step, index) => (
+						<article
+							class:list={[
+								'group relative flex flex-col rounded-card border-2 border-ink bg-cloud p-6 shadow-pop transition-[transform,box-shadow] duration-200 hover:rotate-0 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop-lg',
+								index % 2 === 0
+									? 'rotate-[-1.5deg]'
+									: 'rotate-[1.5deg]',
+							]}
+						>
+
+							<!-- Number + category -->
+
+							<div class="relative z-10 mb-5 flex items-center justify-between gap-3">
+
+								<span
+									class="inline-flex items-center rounded-chip border-2 border-ink bg-orange px-3 py-1 text-[13px] font-bold text-cloud"
+								>
+									{step.number}
+								</span>
+
+								<span
+									class="inline-flex items-center rounded-chip border-2 border-ink/15 bg-orange-soft px-3 py-1 text-[13px] font-bold text-orange-deep"
+								>
+									Research
+								</span>
+
+							</div>
+
+
+							<!-- Title -->
+
+							<h3 class="text-[22px] font-bold leading-tight tracking-[-0.02em] text-ink">
+								{step.title}
+							</h3>
+
+
+							<!-- Description -->
+
+							<p class="mt-3 text-[15px] leading-relaxed text-ink/75">
+								{step.description}
+							</p>
+
+
+							<!-- Detail -->
+
+							<div class="mt-5 border-t-2 border-line pt-5">
+
+								<p class="text-[14px] leading-relaxed text-ink/65">
+									{step.detail}
+								</p>
+
+							</div>
+
+						</article>
+					))}
+
+				</div>
+
+			</div>
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- RESEARCH FLOW -->
+		<!-- ========================================= -->
+
+		<section class="border-y-2 border-line bg-paper">
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+					Research Flow
+				</p>
+
+				<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+					Penelitian bukan sekadar membuat aplikasi.
+				</h2>
+
+				<p class="mt-5 max-w-3xl text-base leading-relaxed text-ink/70">
+					Dalam penelitian komputasi, software, dataset, maupun eksperimen
+					merupakan bagian dari proses untuk menjawab pertanyaan penelitian
+					dan menghasilkan kontribusi terhadap pengetahuan.
+				</p>
+
+
+				<!-- Flow -->
+
+				<div class="mt-12 overflow-x-auto pb-4">
+
+					<div class="flex min-w-max items-center gap-3">
+
+						{steps.map((step, index) => (
+							<div class="flex items-center gap-3">
+
+								<div
+									class="group rounded-tile border-2 border-ink bg-cloud px-5 py-4 shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+								>
+
+									<p class="text-xs font-bold text-orange-deep">
+										{step.number}
+									</p>
+
+									<p class="mt-2 text-sm font-bold text-ink">
+										{step.title}
+									</p>
+
+								</div>
+
+								{index < steps.length - 1 && (
+									<span class="text-xl font-bold text-orange-deep">
+										→
+									</span>
+								)}
+
+							</div>
+						))}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- EXPLANATION -->
+		<!-- ========================================= -->
+
+		<section>
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="grid gap-8 lg:grid-cols-2">
+
+					<div>
+
+						<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+							Cara Membacanya
+						</p>
+
+						<h2 class="mt-3 text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+							Setiap tahap saling berhubungan.
+						</h2>
+
+					</div>
+
+
+					<div class="text-base leading-relaxed text-ink/70">
+
+						<p>
+							Research field menjadi titik awal untuk menentukan bidang
+							yang ingin dipelajari. Dari sana penelitian dipersempit
+							menjadi research topic dan research problem.
+						</p>
+
+						<p class="mt-5">
+							Setelah masalah penelitian ditemukan, peneliti perlu
+							memahami state-of-the-art, menentukan proposed method,
+							melakukan evaluation, kemudian mendokumentasikan hasil
+							penelitian melalui publication.
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- CTA -->
+		<!-- ========================================= -->
+
+		<section class="border-t-2 border-line">
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="rounded-card border-2 border-ink bg-navy p-8 shadow-pop sm:p-10">
+
+					<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-glow">
+						Mulai dari Dasar
+					</p>
+
+					<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-cloud sm:text-4xl">
+						Pahami mitos penelitian sebelum mulai meneliti.
+					</h2>
+
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-cloud/70">
+						Pelajari 10 mitos penelitian di bidang komputasi untuk
+						memahami bagaimana research problem, literature review,
+						metodologi, kontribusi, dan publikasi saling berhubungan.
+					</p>
+
+					<div class="mt-7">
+
+						<a
+							href="/myths"
+							class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+						>
+							Pelajari 10 Mitos
+							<span class="ml-1">→</span>
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</main>
+</BaseLayout>

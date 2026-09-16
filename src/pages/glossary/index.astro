@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/blog/PageBanner.astro';
+import TagPill from '../../components/blog/TagPill.astro';
+
+const glossary = [
+	{
+		term: 'Research Problem',
+		category: 'Dasar',
+		definition:
+			'Masalah atau persoalan ilmiah yang ingin dijawab melalui sebuah penelitian.',
+	},
+	{
+		term: 'Research Question',
+		category: 'Dasar',
+		definition:
+			'Pertanyaan penelitian yang dirumuskan berdasarkan research problem dan menjadi arah utama penelitian.',
+	},
+	{
+		term: 'Research Gap',
+		category: 'Literature Review',
+		definition:
+			'Bagian dari pengetahuan atau penelitian sebelumnya yang masih belum terjawab, belum optimal, atau masih dapat dikembangkan.',
+	},
+	{
+		term: 'Literature Review',
+		category: 'Literature Review',
+		definition:
+			'Proses mempelajari dan mengevaluasi penelitian sebelumnya untuk memahami perkembangan pengetahuan dan menemukan research gap.',
+	},
+	{
+		term: 'State-of-the-Art',
+		category: 'Literature Review',
+		definition:
+			'Gambaran mengenai perkembangan penelitian terbaru dan pendekatan yang telah digunakan pada suatu topik penelitian.',
+	},
+	{
+		term: 'Research Contribution',
+		category: 'Kontribusi',
+		definition:
+			'Kontribusi yang diberikan penelitian terhadap pengetahuan atau pemahaman dalam bidang yang diteliti.',
+	},
+	{
+		term: 'Proposed Method',
+		category: 'Metodologi',
+		definition:
+			'Metode atau pendekatan yang diusulkan peneliti untuk menjawab research problem.',
+	},
+	{
+		term: 'Experiment',
+		category: 'Evaluasi',
+		definition:
+			'Proses pengujian yang dilakukan untuk memperoleh bukti atau hasil terkait metode dan pertanyaan penelitian.',
+	},
+	{
+		term: 'Evaluation',
+		category: 'Evaluasi',
+		definition:
+			'Proses menilai hasil penelitian berdasarkan ukuran atau kriteria yang telah ditentukan.',
+	},
+	{
+		term: 'Citation',
+		category: 'Etika',
+		definition:
+			'Penyebutan sumber penelitian atau karya ilmiah yang digunakan dalam penelitian.',
+	},
+	{
+		term: 'Paraphrase',
+		category: 'Etika',
+		definition:
+			'Menyampaikan kembali gagasan dari suatu sumber menggunakan susunan kalimat sendiri tanpa mengubah makna utamanya.',
+	},
+	{
+		term: 'Plagiarism',
+		category: 'Etika',
+		definition:
+			'Penggunaan gagasan atau karya orang lain secara tidak tepat sehingga seolah-olah merupakan hasil sendiri.',
+	},
+	{
+		term: 'Salami Slicing',
+		category: 'Publikasi',
+		definition:
+			'Memecah satu kontribusi penelitian menjadi beberapa publikasi hanya untuk meningkatkan jumlah paper.',
+	},
+	{
+		term: 'Fundamental Research',
+		category: 'Jenis Penelitian',
+		definition:
+			'Penelitian yang berfokus pada pengembangan atau penambahan pengetahuan dasar.',
+	},
+	{
+		term: 'Applied Research',
+		category: 'Jenis Penelitian',
+		definition:
+			'Penelitian yang berfokus pada penerapan pengetahuan atau metode untuk menyelesaikan permasalahan tertentu.',
+	},
+];
+
+const categories = [...new Set(glossary.map((item) => item.category))];
+---
+
+<BaseLayout
+	title="Research Glossary"
+	description="Kamus istilah penting dalam penelitian bidang komputasi."
+>
+	<main>
+
+		<!-- ========================================= -->
+		<!-- PAGE BANNER -->
+		<!-- ========================================= -->
+
+		<PageBanner
+			eyebrow="Research Glossary"
+			title="Kamus Istilah Penelitian"
+			sub="Pahami istilah-istilah penting yang sering digunakan dalam penelitian bidang komputasi."
+		/>
+
+
+		<!-- ========================================= -->
+		<!-- GLOSSARY -->
+		<!-- ========================================= -->
+
+		<section>
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<!-- CATEGORY -->
+
+				<div class="mb-10">
+
+					<p class="mb-4 text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+						Kategori
+					</p>
+
+					<div class="flex flex-wrap gap-2.5">
+
+						<TagPill
+							name="Semua Istilah"
+							link={false}
+							active={true}
+						/>
+
+						{categories.map((category) => (
+							<TagPill
+								name={category}
+								link={false}
+							/>
+						))}
+
+					</div>
+
+				</div>
+
+
+				<!-- SECTION TITLE -->
+
+				<div class="mb-10 flex items-end justify-between gap-6">
+
+					<div>
+
+						<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-deep">
+							Daftar Istilah
+						</p>
+
+						<h2 class="mt-2 text-3xl font-bold tracking-[-0.02em] text-ink">
+							15 Istilah Penelitian
+						</h2>
+
+					</div>
+
+					<p class="hidden text-sm font-semibold text-ink/50 sm:block">
+						15 istilah
+					</p>
+
+				</div>
+
+
+				<!-- TERMS -->
+
+				<div class="grid gap-8 md:grid-cols-2">
+
+					{glossary.map((item, index) => (
+						<article
+							class:list={[
+								'group relative flex flex-col rounded-card border-2 border-ink bg-cloud p-6 shadow-pop transition-[transform,box-shadow] duration-200 hover:rotate-0 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop-lg',
+								index % 2 === 0
+									? 'rotate-[-1.5deg]'
+									: 'rotate-[1.5deg]',
+							]}
+						>
+
+							<!-- Category -->
+
+							<div class="relative z-10 mb-5">
+
+								<TagPill
+									name={item.category}
+									link={false}
+								/>
+
+							</div>
+
+
+							<!-- Term -->
+
+							<h3 class="text-[22px] font-bold leading-tight tracking-[-0.02em] text-ink">
+								{item.term}
+							</h3>
+
+
+							<!-- Definition -->
+
+							<p class="mt-4 text-[15px] leading-relaxed text-ink/75">
+								{item.definition}
+							</p>
+
+
+							<!-- Accent -->
+
+							<div class="mt-6 border-t-2 border-line pt-4">
+
+								<span class="text-[13px] font-bold text-orange-deep">
+									Research Glossary
+								</span>
+
+							</div>
+
+						</article>
+					))}
+
+				</div>
+
+			</div>
+		</section>
+
+
+		<!-- ========================================= -->
+		<!-- CTA -->
+		<!-- ========================================= -->
+
+		<section class="border-t-2 border-line">
+
+			<div class="mx-auto max-w-300 px-8 py-16">
+
+				<div class="rounded-card border-2 border-ink bg-navy p-8 shadow-pop sm:p-10">
+
+					<p class="text-[13px] font-bold uppercase tracking-[0.12em] text-orange-glow">
+						Pelajari Lebih Dalam
+					</p>
+
+					<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.02em] text-cloud sm:text-4xl">
+						Istilah akan lebih mudah dipahami melalui konteks penelitian.
+					</h2>
+
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-cloud/70">
+						Setelah memahami istilah dasarnya, lanjutkan dengan membaca
+						10 Mitos Penelitian untuk melihat bagaimana konsep-konsep
+						tersebut digunakan dalam penelitian komputasi.
+					</p>
+
+					<div class="mt-7">
+
+						<a
+							href="/myths"
+							class="inline-flex items-center rounded-full border-2 border-ink bg-orange px-5 py-2.5 text-sm font-bold text-cloud shadow-pop-sm transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pop"
+						>
+							Pelajari 10 Mitos
+							<span class="ml-1">→</span>
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</main>
+</BaseLayout>

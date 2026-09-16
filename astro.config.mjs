@@ -11,7 +11,14 @@ import { site } from './src/site.config.ts';
 export default defineConfig({
   // sitemap / RSS / canonical URL の絶対化に使う。デプロイ先に合わせて site.config.ts で変更する
   site: site.url,
+
+  // Matikan Astro Dev Toolbar
+  devToolbar: {
+    enabled: false,
+  },
+
   integrations: [mdx(), sitemap()],
+
   vite: {
     plugins: [tailwindcss()],
   },

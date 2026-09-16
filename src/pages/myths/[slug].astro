@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import MythLayout from '../../layouts/MythLayout.astro';
+
+export async function getStaticPaths() {
+	const myths = await getCollection('myths');
+
+	const publishedMyths = myths
+		.filter((myth) => !myth.data.draft)
+		.sort((a, b) => a.data.mythNumber - b.data.mythNumber);
+
+	return publishedMyths.map((myth, index) => ({
+		params: {
+			slug: myth.id,
+		},
+		props: {
+			myth,
+			prev: index > 0 ? publishedMyths[index - 1] : null,
+			next:
+				index < publishedMyths.length - 1
+					? publishedMyths[index + 1]
+					: null,
+		},
+	}));
+}
+
+const { myth, prev, next } = Astro.props;
+
+const { Content } = await render(myth);
+---
+
+<MythLayout
+	myth={myth}
+	prev={prev}
+	next={next}
+>
+	<Content />
+</MythLayout>

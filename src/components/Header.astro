@@ -1,14 +1,11 @@
 ---
 import Logo from './Logo.astro';
 
-// LP のセクションへは絶対パス付きアンカーにして、ブログ等の下層ページからも辿れるようにする
 const links = [
-	{ href: '/#features', label: 'Features' },
-	{ href: '/#showcase', label: 'Showcase' },
-	{ href: '/blog', label: 'Blog' },
-	{ href: '/work', label: 'Work' },
-	{ href: '/#pricing', label: 'Pricing' },
-	{ href: '/#faq', label: 'FAQ' },
+	{ href: '/myths', label: 'Mitos' },
+	{ href: '/roadmap', label: 'Roadmap' },
+	{ href: '/glossary', label: 'Glossary' },
+	{ href: '/about', label: 'About' },
 ];
 ---
 
@@ -16,35 +13,136 @@ const links = [
 	id="site-nav"
 	class="sticky top-0 z-50 border-b-[3px] border-orange bg-ink/96 backdrop-blur-xl transition-shadow duration-250"
 >
-	<div class="mx-auto flex max-w-[1200px] items-center gap-8 px-8 py-4">
+	<div class="mx-auto flex max-w-300 items-center gap-8 px-6 py-4 lg:px-8">
+
+		<!-- LOGO -->
 		<Logo />
+
+		<!-- DESKTOP NAVIGATION -->
 		<div class="hidden gap-7 text-[15px] font-semibold md:flex">
-			{links.map((link) => <a href={link.href} class="text-sky hover:text-orange">{link.label}</a>)}
+			{links.map((link) => (
+				<a
+					href={link.href}
+					class="text-sky transition-colors hover:text-orange"
+				>
+					{link.label}
+				</a>
+			))}
 		</div>
+
+		<!-- RIGHT SIDE -->
 		<div class="ml-auto flex items-center gap-3.5">
-			<a href="/search" aria-label="Search" class="text-sky hover:text-orange">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+
+			<!-- SEARCH -->
+			<a
+				href="/search"
+				aria-label="Search"
+				class="text-sky transition-colors hover:text-orange"
+			>
+				<svg
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					aria-hidden="true"
+				>
 					<circle cx="11" cy="11" r="7"></circle>
 					<line x1="21" y1="21" x2="16.5" y2="16.5"></line>
 				</svg>
 			</a>
-			<a href="#" class="hidden text-[15px] font-semibold text-cloud hover:text-orange sm:inline">Sign in</a>
+
+			<!-- CTA DESKTOP -->
 			<a
-				href="/#pricing"
-				class="rounded-full bg-orange px-5 py-2.5 text-[15px] font-bold text-cloud shadow-[3px_3px_0_var(--color-cloud)] transition-[transform,box-shadow] hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_var(--color-cloud)]"
-				>Get Kepler</a
+				href="/myths"
+				class="hidden rounded-full bg-orange px-5 py-2.5 text-[15px] font-bold text-cloud shadow-[3px_3px_0_var(--color-cloud)] transition-[transform,box-shadow] hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_var(--color-cloud)] sm:inline"
 			>
+				Mulai Belajar →
+			</a>
+
+			<!-- MOBILE MENU BUTTON -->
+			<button
+				id="menu-button"
+				type="button"
+				aria-label="Buka menu"
+				aria-expanded="false"
+				class="inline-flex items-center justify-center text-sky md:hidden"
+			>
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+				>
+					<line x1="4" y1="6" x2="20" y2="6"></line>
+					<line x1="4" y1="12" x2="20" y2="12"></line>
+					<line x1="4" y1="18" x2="20" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<!-- MOBILE NAVIGATION -->
+	<div
+		id="mobile-menu"
+		class="hidden border-t border-sky/20 px-6 pb-6 pt-4 md:hidden"
+	>
+		<div class="flex flex-col gap-4 text-[15px] font-semibold">
+			{links.map((link) => (
+				<a
+					href={link.href}
+					class="text-sky transition-colors hover:text-orange"
+				>
+					{link.label}
+				</a>
+			))}
+
+			<a
+				href="/search"
+				class="text-sky transition-colors hover:text-orange"
+			>
+				Search
+			</a>
+
+			<a
+				href="/myths"
+				class="mt-2 inline-block w-fit rounded-full bg-orange px-5 py-2.5 font-bold text-cloud"
+			>
+				Mulai Belajar →
+			</a>
 		</div>
 	</div>
 </nav>
 
 <script>
-	// スクロール時にシャドウを付ける（プロトタイプ: scrollY > 8 で 0 6px 20px rgba(15,30,66,.25)）
 	const nav = document.getElementById('site-nav');
+
 	const onScroll = () => {
 		if (!nav) return;
-		nav.style.boxShadow = window.scrollY > 8 ? '0 6px 20px rgb(15 30 66 / 0.25)' : 'none';
+
+		nav.style.boxShadow =
+			window.scrollY > 8
+				? '0 6px 20px rgb(15 30 66 / 0.25)'
+				: 'none';
 	};
+
 	window.addEventListener('scroll', onScroll, { passive: true });
 	onScroll();
+
+	const menuButton = document.getElementById('menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	menuButton?.addEventListener('click', () => {
+		if (!mobileMenu) return;
+
+		const isOpen = !mobileMenu.classList.contains('hidden');
+
+		mobileMenu.classList.toggle('hidden');
+		menuButton.setAttribute('aria-expanded', String(!isOpen));
+	});
 </script>
